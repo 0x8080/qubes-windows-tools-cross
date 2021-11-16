@@ -44,7 +44,6 @@ PVDRIVERS := $(patsubst %.tar,%-$(PVDRIVERS_VERSION).tar,$(PVDRIVERS_UPSTREAM))
 $(PVDRIVERS): %-$(PVDRIVERS_VERSION).tar:
 	echo $*
 	$(FETCH_CMD) $@.UNTRUSTED "$(filter %$*.tar,$(PVDRIVERS_URLS))"
-	grep $@ sources|sed 's:$@:$@.UNTRUSTED:' | sha512sum -c -
 	mv $@.UNTRUSTED $@
 
 
